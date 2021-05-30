@@ -3,7 +3,6 @@ package com.example.rewmeslow.ui.gallery;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,19 +20,18 @@ import com.example.rewmeslow.DBHelper;
 import com.example.rewmeslow.R;
 import com.example.rewmeslow.databinding.FragmentGalleryBinding;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class GalleryFragment extends Fragment {
+
 
     private GalleryViewModel galleryViewModel;
     private FragmentGalleryBinding binding;
     SQLiteDatabase db;
-    int i = 0;
+
     DBHelper dbHelper;
     RecyclerView rv;
-    ArrayList<Bild> bildList = new ArrayList<>();
+    public static ArrayList<Bild> bildList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -69,14 +67,19 @@ public class GalleryFragment extends Fragment {
     }
 
     public void readData() {
-        dbHelper = new DBHelper(requireActivity().getApplicationContext(), "TestDB", null, 1);// хуйня, мне не нравится
+        dbHelper = new DBHelper(requireActivity().getApplicationContext(), "TestDB", null, 1);// мне  нравится
         db = dbHelper.getReadableDatabase();
+        dbHelper.nessUpdate(db);
         Cursor c = db.rawQuery("SELECT * FROM bilde", null);
         while (c.moveToNext()) {
-            bildList.add(new Bild(c.getString(1), Integer.parseInt(c.getString(2)), c.getString(3) , c.getString(4)));
-
-
+            bildList.add(new Bild(c.getString(1), Integer.parseInt(c.getString(2)), c.getString(3), c.getString(4)));
         }
 
+
     }
+
+     public static ArrayList<Bild> returnlist(){
+        return bildList;
+    }
+
 }

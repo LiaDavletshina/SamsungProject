@@ -41,7 +41,19 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+
     }
 
+
+    public void UpdateWithUserData(SQLiteDatabase db, String name, int year, String author, String link){
+
+        //                     :(((((((((((((((((
+
+    }
+    public void nessUpdate(SQLiteDatabase db){
+        db.execSQL("UPDATE bilde SET name = '«Открытие II конгресса Коминтерна»' WHERE author = 'И.И.Бродский'");
+        db.execSQL("UPDATE bilde SET link = 'http://www.art-auction.ru/files/services_pictures/244.jpg' WHERE name = 'Тихо'");
+        //
+    }
 
 }
