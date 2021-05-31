@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/pichome"
-        android:layout_width="263dp"
-        android:layout_height="228dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="52dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,8 @@
         android:layout_width="317dp"
         android:layout_height="73dp"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginBottom="128dp"
+        android:fontFamily="sans-serif-black"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -50,7 +51,8 @@
         android:layout_width="84dp"
         android:layout_height="29dp"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="248dp"
+        android:layout_marginBottom="68dp"
+        android:fontFamily="sans-serif-black"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

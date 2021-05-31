@@ -1,5 +1,10 @@
 package com.example.rewmeslow.ui.home;
+import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -21,6 +27,7 @@ import com.example.rewmeslow.R;
 import com.example.rewmeslow.databinding.FragmentHomeBinding;
 import com.example.rewmeslow.ui.gallery.Bild;
 import com.example.rewmeslow.ui.gallery.GalleryFragment;
+import com.example.rewmeslow.ui.gallery.RecyclerHelper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -86,7 +93,7 @@ public class HomeFragment extends Fragment {
         ;
         agehome.setText(String.valueOf(bildList.get(aye).year));
         namehome.setText(String.valueOf(bildList.get(aye).name));
-
+        //new DownloadImageTask2(pichome).execute(String.valueOf(bildList.get(aye).link));
 
 
 
@@ -111,6 +118,8 @@ public class HomeFragment extends Fragment {
     }
 
 }
+
+
 
 
 
