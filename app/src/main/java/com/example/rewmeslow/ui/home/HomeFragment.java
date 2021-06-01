@@ -34,29 +34,31 @@ import com.google.gson.GsonBuilder;
 import static com.example.rewmeslow.ui.gallery.GalleryFragment.bildList;
 
 public class HomeFragment extends Fragment {
-    TextView agehome, namehome;
+    TextView agehome, namehome,description;
     ImageView pichome;
+    OkHttpClient client;
+    String myResponse;
+    public int DayCount;
 
-    //private static final String TAG = "Info";
     final String url = "http://worldtimeapi.org/api/timezone/Europe/Moscow";
     private FragmentHomeBinding binding;
-    OkHttpClient client;
-    int hash = 1;
-    public int aye;
+
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        client = new OkHttpClient();
-
-        OkHttpClient client = new OkHttpClient();
+        DayCount = 3;
         pichome = root.findViewById(R.id.pichome);
         agehome = root.findViewById(R.id.agehome);
         namehome = root.findViewById(R.id.namehome);
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
+        description = root.findViewById(R.id.description);
+        description.setText("Работу над картиной Герасимов начинает в 1934 году заказу, внесенному по предложению члена Реввоенсовета Ефима Щаденко. Сохранился ряд портретных этюдов, изображающих отдельных командиров армии. Создание такого большого количества этюдов было необычным для творческого метода художника, что он отдельно отметил в своих воспоминаниях.\n" +
+                "\n" +
+                "В 1937 году картина была показана в Париже на Всемирной выставке и получило высшую награду — Гран-При.\n" +
+                "\n" );
 
 
 
@@ -69,31 +71,13 @@ public class HomeFragment extends Fragment {
 
 
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                e.printStackTrace();
-            }
 
-            @Override
-            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                if (response.isSuccessful()){
-                    GsonBuilder builder = new GsonBuilder();
-                    Gson gson = builder.create();
-                    assert response.body() != null;
-                    String myResponce = response.body().string();
-                    Day fuck = gson.fromJson(myResponce, Day.class);
-                    int eah = fuck.day_of_year;
-                    hash = eah/10;
-                    aye = hash;
-                }
-            }
-        });
 
-        ;
-        agehome.setText(String.valueOf(bildList.get(aye).year));
-        namehome.setText(String.valueOf(bildList.get(aye).name));
-        //new DownloadImageTask2(pichome).execute(String.valueOf(bildList.get(aye).link));
+
+        agehome.setText(String.valueOf(bildList.get(DayCount).year));
+        namehome.setText(String.valueOf(bildList.get(DayCount).name) + "  "+  bildList.get(DayCount).author);
+        new DownloadImageTask2(pichome).execute(String.valueOf(bildList.get(DayCount).link));
+
 
 
 
@@ -110,69 +94,72 @@ public class HomeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+    /*public int APIReq(String url){
+    client = new OkHttpClient();
+    OkHttpClient client = new OkHttpClient();
+    Request request = new Request.Builder()
+            .url(url)
+            .build();
+
+        client.newCall(request).enqueue(new Callback() {
+        @Override
+        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+            e.printStackTrace();
+        }
+
+        @Override
+        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+            if (response.isSuccessful()) {
+                int a = 1;
+                assert response.body() != null;}}
 
 
 
-    public void rendering(ArrayList<Bild> bild, int hash){
+    myResponse = response.body().string();
+    GsonBuilder builder = new GsonBuilder();
+    Gson gson = builder.create();
+    Day day = gson.fromJson(myResponse, Day.class);
+    DayCount = day.day_of_year % 10;
+    return DayCount;
 
-    }
+        }
+    );
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class Day {
-    String abbreviation;
-    String ip;
-    String datetime;
-    int day_of_week;
-    int day_of_year;
-    boolean dst;
-    Object dst_from;
-    int dst_offset;
-    Object dst_until;
-    int raw_offset;
-    String timezone;
-    double unixtime;
-    String utc_datetime;
-    String utc_offset;
-    int week_number;
+    }*/
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

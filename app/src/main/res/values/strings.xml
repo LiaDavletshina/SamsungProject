@@ -7,8 +7,17 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Настройки</string>
     <string name="picture_of_the_day">Картина дня</string>
-    <string name="menu_home">Картина Дня(home fragment)</string>
+    <string name="menu_home">Картина Дня</string>
     <string name="menu_gallery">Галерея</string>
-    <string name="menu_slideshow">Слайд-шоу</string>
+    <string name="menu_slideshow">Обратная связь</string>
     <string name="test">Its just a test string</string>
+    <string name="description">
+        Привет, дорогой ценитель соцреализма!
+
+        Здраствуй, милая поклонница соцреализма!
+
+       Целью приложение является продвижение творчества художников-соцреалистов в массы. Будем рады, если расскажете нам о недочётах и своих идеях для нашего проекта.
+
+        Чтобы пополнить мои знания картиной, напишите пользователю Telegram с никнеймом @animeshnica_liza сообщение с приложенной ссылкой на работу художника-соцреалиста, которой нет в приложении. Остальную работу
+    мы берем на себя)</string>
 </resources>

@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class RecyclerHelper extends RecyclerView.Adapter<RecyclerHelper.MyAdapter> {
 
     public class MyAdapter extends RecyclerView.ViewHolder {
-        TextView name,age;
+        TextView name,age,author;
         ImageView pic;
         Button btn;
         public MyAdapter(@NonNull View itemView) {
@@ -36,7 +36,7 @@ public class RecyclerHelper extends RecyclerView.Adapter<RecyclerHelper.MyAdapte
             name = itemView.findViewById(R.id.name);
             age = itemView.findViewById(R.id.age);
             pic = itemView.findViewById(R.id.pic);
-            btn = itemView.findViewById(R.id.btn);
+            author = itemView.findViewById(R.id.author);
             
 
 
@@ -61,6 +61,10 @@ public class RecyclerHelper extends RecyclerView.Adapter<RecyclerHelper.MyAdapte
     public void onBindViewHolder(@NonNull MyAdapter holder, int position) {
         holder.name.setText(arr.get(position).name);
         holder.age.setText(String.valueOf(arr.get(position).year));
+        holder.author.setText(String.valueOf(arr.get(position).author));
+        if (position == 3){
+            holder.pic.setImageResource(R.mipmap.three);
+        }
         new DownloadImageTask(holder.pic).execute(String.valueOf(arr.get(position).link));
 
     }
